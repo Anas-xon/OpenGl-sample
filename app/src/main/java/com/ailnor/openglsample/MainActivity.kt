@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
         if ((getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager).deviceConfigurationInfo.reqGlEsVersion < 0x00030001)
             Log.e("Log", "This device doesn't support OpenGL 3.1")
 
-        surfaceView.setEGLContextClientVersion(3)
-        surfaceView.setRenderer(MainRenderer())
+        surfaceView.setEGLContextClientVersion(2)
+        surfaceView.setRenderer(MainRenderer(this))
         rendererSet = true
         setContentView(surfaceView)
 

@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             Log.e("Log", "This device doesn't support OpenGL 3.1")
 
         surfaceView.setEGLContextClientVersion(2)
-        surfaceView.setRenderer(MainRenderer(this))
+        surfaceView.setRenderer(AirHockeyRenderer(this))
         rendererSet = true
         setContentView(surfaceView)
 

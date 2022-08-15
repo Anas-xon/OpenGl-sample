@@ -15,17 +15,13 @@ class ColorShaderProgram(context: Context): ShaderProgram(
 
     // Uniform locations
     private val uMatrixLocation = glGetUniformLocation(program, U_MATRIX)
+    private val uColorLocation = glGetUniformLocation(program, U_COLOR)
 
     // Attribute locations
     val aPositionLocation = glGetAttribLocation(program, A_POSITION)
-    val uColorLocation = glGetAttribLocation(program, U_COLOR)
 
-    fun setUniforms(matrix: FloatArray) {
-        // Pass the matrix into the shader program.
-        glUniformMatrix4fv(uMatrixLocation, 1, false, matrix, 0)
-    }
 
-    fun setUniforms(matrix: FloatArray, r: Float, g: Float, b: Float) {
+    fun setUniforms(matrix: FloatArray?, r: Float, g: Float, b: Float) {
         glUniformMatrix4fv(uMatrixLocation, 1, false, matrix, 0)
         glUniform4f(uColorLocation, r, g, b, 1f)
     }

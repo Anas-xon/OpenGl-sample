@@ -10,7 +10,7 @@ import com.ailnor.openglsample.programs.ColorShaderProgram
 
 
 class Puck(
-    radius: Float,
+    val radius: Float,
     val height: Float,
     numPointAroundPuck: Int
 ){

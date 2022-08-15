@@ -4,7 +4,6 @@
 
 package com.ailnor.openglsample.objects
 
-import android.R.attr
 import android.opengl.GLES20.*
 import com.ailnor.openglsample.Geometry
 import com.ailnor.openglsample.Geometry.Circle
@@ -47,32 +46,41 @@ class ObjectBuilder(sizeInVertices: Int) {
         }
 
         fun createMallet(center: Geometry.Point, radius: Float, height: Float, numPoints: Int): GeneratedData {
-            val size = (sizeOfCircleInVertices(numPoints) * 2
-                    + sizeOfOpenCylinderInVertices(numPoints) * 2)
+            val size = (sizeOfCircleInVertices(numPoints) * 2 + sizeOfOpenCylinderInVertices(numPoints) * 2)
+
             val builder = ObjectBuilder(size)
+
             // First, generate the mallet base.
-            val baseHeight = attr.height * 0.25f
+
+            val baseHeight = height * 0.25f
+
             val baseCircle = Circle(
                 center.translateY(-baseHeight),
-                attr.radius.toFloat()
+                radius
             )
             val baseCylinder = Cylinder(
                 baseCircle.center.translateY(-baseHeight / 2f),
-                attr.radius.toFloat(), baseHeight
+                radius, baseHeight
             )
+
             builder.appendCircle(baseCircle, numPoints)
             builder.appendOpenCylinder(baseCylinder, numPoints)
 
-            val handleHeight = attr.height * 0.75f
-            val handleRadius = attr.radius / 3f
+            // Now generate the mallet handle.
+
+            // Now generate the mallet handle.
+            val handleHeight = height * 0.75f
+            val handleRadius = radius / 3f
+
             val handleCircle = Circle(
-                center.translateY(attr.height * 0.5f),
+                center.translateY(height * 0.5f),
                 handleRadius
             )
             val handleCylinder = Cylinder(
                 handleCircle.center.translateY(-handleHeight / 2f),
                 handleRadius, handleHeight
             )
+
             builder.appendCircle(handleCircle, numPoints)
             builder.appendOpenCylinder(handleCylinder, numPoints)
 

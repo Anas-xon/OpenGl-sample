@@ -4,9 +4,7 @@
 
 package com.ailnor.openglsample.objects
 
-import android.opengl.GLES20.*
 import com.ailnor.openglsample.Geometry
-import com.ailnor.openglsample.Utils
 import com.ailnor.openglsample.VertexArray
 import com.ailnor.openglsample.objects.ObjectBuilder.DrawCommand
 import com.ailnor.openglsample.objects.ObjectBuilder.GeneratedData
@@ -14,7 +12,7 @@ import com.ailnor.openglsample.programs.ColorShaderProgram
 
 
 class Mallet(
-    radius: Float,
+    val radius: Float,
     val height: Float,
     numPointsAroundMallet: Int
 ){
